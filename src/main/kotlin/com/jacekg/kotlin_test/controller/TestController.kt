@@ -1,6 +1,7 @@
 package com.jacekg.kotlin_test.controller
 
 import com.jacekg.kotlin_test.dto.DetailsResponse
+import org.slf4j.LoggerFactory
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
@@ -12,10 +13,12 @@ import java.time.format.DateTimeFormatter
 @RequestMapping("/api/v1")
 class TestController {
 
-    val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
+    private val logger = LoggerFactory.getLogger(TestController::class.java)
+    val formatter: DateTimeFormatter? = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
 
     @GetMapping("/details")
     fun getDetails(): DetailsResponse {
+        logger.info("getting details")
         return DetailsResponse(InetAddress.getLocalHost().hostName,
             LocalDateTime.now().format(formatter))
     }
