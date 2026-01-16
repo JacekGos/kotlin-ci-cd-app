@@ -21,4 +21,4 @@ spec:
             - containerPort: 9090
           env:
             - name: SERVER_PORT
-              value: "9090"
+              value: "9090" # this container is running on port 9090

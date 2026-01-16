@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-kotlin-test-app
+spec:
+  ingressClassName: nginx # kubectl get ingressclass to see available classes
+  rules:
+    - http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: kotlin-test-app
+                port:
+                  number: 80 # match the port: 80 defined in the service.yaml
