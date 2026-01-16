@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kotlin-test-app
+  labels:
+    app: kotlin-test-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kotlin-test-app
+  template:
+    metadata:
+      labels:
+        app: kotlin-test-app
+    spec:
+      containers:
+        - name: kotlin-test-app
+          image: jacekgdev11/kotlin-test-app:v2
+          ports:
+            - containerPort: 9090
+          env:
+            - name: SERVER_PORT
+              value: "9090"
