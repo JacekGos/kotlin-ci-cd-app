@@ -22,4 +22,9 @@ class TestController {
         return DetailsResponse(InetAddress.getLocalHost().hostName,
             LocalDateTime.now().format(formatter))
     }
+
+    @GetMapping("/health")
+    fun health(): Map<String, String> {
+        return mapOf("status" to "UP")
+    }
 }
