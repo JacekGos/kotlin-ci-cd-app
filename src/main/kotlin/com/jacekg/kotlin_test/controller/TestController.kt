@@ -20,6 +20,7 @@ class TestController {
     fun getDetails(): DetailsResponse {
         logger.info("getting details")
         return DetailsResponse(InetAddress.getLocalHost().hostName,
+            "Hello",
             LocalDateTime.now().format(formatter))
     }
 
