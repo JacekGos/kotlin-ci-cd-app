@@ -18,7 +18,7 @@ class TestController {
 
     @GetMapping("/details")
     fun getDetails(): DetailsResponse {
-        logger.info("getting details")
+        logger.info("getting details ")
         return DetailsResponse(InetAddress.getLocalHost().hostName,
             "Hello",
             LocalDateTime.now().format(formatter))
