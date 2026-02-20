@@ -44,10 +44,7 @@ jobs:
       - name: Commit changes
         uses: EndBug/add-and-commit@v9
         with:
-          author_name: Your Name
-          author_email: mail@example.com
-          message: 'Uptate values.yaml image tag to ${{ needs.ci.outputs.commit_id }}'
-          add: 'report.txt'
+          message: 'Update values.yaml image tag to ${{ needs.ci.outputs.commit_id }}'
       - name: Install argocd
         shell: bash
         run: |
