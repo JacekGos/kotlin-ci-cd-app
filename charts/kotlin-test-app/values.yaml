@@ -2,7 +2,7 @@ replicaCount: 2
 image:
   repository: jacekgdev11/kotlin-test-app
   pullPolicy: IfNotPresent
-  tag: 5ff890
+  tag: 0d7c6f
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
