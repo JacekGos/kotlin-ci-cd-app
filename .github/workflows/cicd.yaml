@@ -1,4 +1,4 @@
-name: ci
+name: cicd
 
 on:
   push:
@@ -8,8 +8,8 @@ on:
       - main
 
 jobs:
-  docker:
-    runs-on: self-hosted
+  ci:
+    runs-on: ubuntu-latest
     steps:
       - name: Shorten sha
         shell: bash
@@ -27,3 +27,16 @@ jobs:
         with:
           push: true
           tags: jacekgdev11/kotlin-test-app:${{ env.sha_short }}
+  cd:
+    needs: ci
+    runs-on: self-hosted
+    steps:
+      - name: Argocd app sync
+        shell: bash
+        run: |
+          argocd login argocd-server.argocd \
+            --insecure  \
+            --grpc-web \
+            --username admin \
+            --password  ${{ secrets.ARGOCD_PASSWORD }}
+          argocd app sync kotlin-test-app
