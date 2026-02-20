@@ -21,7 +21,9 @@ class TestController {
         logger.info("getting details ")
         return DetailsResponse(InetAddress.getLocalHost().hostName,
             "Hello",
-            LocalDateTime.now().format(formatter))
+            LocalDateTime.now().format(formatter),
+            "kubernetes"
+        )
     }
 
     @GetMapping("/health")
