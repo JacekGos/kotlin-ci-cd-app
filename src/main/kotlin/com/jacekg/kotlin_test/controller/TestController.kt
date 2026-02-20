@@ -26,6 +26,7 @@ class TestController {
 
     @GetMapping("/health")
     fun health(): Map<String, String> {
+        logger.info("checking health for ${InetAddress.getLocalHost().hostName}")
         return mapOf("status" to "UP")
     }
 }
